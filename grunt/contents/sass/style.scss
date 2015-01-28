@@ -56,6 +56,5 @@ ul {
     transition: all 0.20s ease 0s;
     &:hover {
         background-color:adjust-lightness($green, 10);
-
     }
 }

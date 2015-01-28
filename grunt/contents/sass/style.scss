@@ -1,0 +1,38 @@
+@import "compass";
+@import "compass/reset";
+@import "compass/utilities/sprites";
+@import "compass/typography/links/link-colors";
+@import "compass/css3";
+@import "compass/css3/user-interface";
+@import "font_set";
+@import "color_set";
+
+html,body {
+  width:100%;
+  line-height: 25px;
+}
+
+h1 {
+  background-color:$green;
+  padding:15px;
+  color:$white;
+  font-weight: bold;
+  border-bottom:solid 1px $gray;
+  @include box-shadow($gray 0px 2px 2px);
+}
+
+ul {
+    li {
+        border-bottom:solid 1px $gray;
+        padding:20px 10px;
+        cursor: pointer;
+    }
+}
+
+.main-box {
+    padding:10px;
+    h2 {
+        font-weight: bold;
+        margin-bottom:10px;
+    }
+}

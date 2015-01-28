@@ -1,0 +1,181 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+@font-face {
+  font-family: 'icon';
+  src: url("/fonts/icomoon.eot");
+  src: url("/fonts/icomoon.eot") format("embedded-opentype"), url("/fonts/icomoon.woff") format("woff"), url("/fonts/icomoon.ttf") format("truetype"), url("/fonts/icomoon.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icon',Arial,"Droid Sans",sans-serif;
+  speak: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  margin-right: 5px;
+}
+
+.icon-pen:before {
+  content: "\e608";
+}
+
+.icon-coin:before {
+  content: "\e638";
+}
+
+.icon-remove:before {
+  content: "\e6a8";
+}
+
+.icon-warning:before {
+  content: "\e6f4";
+}
+
+.icon-help:before {
+  content: "\e6a2";
+}
+
+.icon-dashboard:before {
+  content: "\e6a2";
+}
+
+.icon-users:before {
+  content: "\e673";
+}
+
+.icon-user:before {
+  content: "\e672";
+}
+
+.icon-clock:before {
+  content: "\e647";
+}
+
+.icon-search:before {
+  content: "\e67f";
+}
+
+.icon-play:before {
+  content: "\e70a";
+}
+
+.icon-checkmark-circle:before {
+  content: "\e6fb";
+}
+
+.icon-profile:before {
+  content: "\e623";
+}
+
+.icon-folder-open:before {
+  content: "\e62f";
+}
+
+.icon-stack:before {
+  content: "\e62d";
+}
+
+.icon-eye:before {
+  content: "\e6c6";
+}
+
+.icon-support:before {
+  content: "\e63b";
+}
+
+.icon-info:before {
+  content: "\e6f7";
+}
+
+.logo-devon:before {
+  content: "\e601";
+}
+
+html, body {
+  width: 100%;
+  line-height: 25px;
+}
+
+h1 {
+  background-color: #afb42b;
+  padding: 15px;
+  color: #f9fbe7;
+  font-weight: bold;
+  border-bottom: solid 1px #9e9e9e;
+  -webkit-box-shadow: #9e9e9e 0px 2px 2px;
+  -moz-box-shadow: #9e9e9e 0px 2px 2px;
+  box-shadow: #9e9e9e 0px 2px 2px;
+}
+
+ul li {
+  border-bottom: solid 1px #9e9e9e;
+  padding: 20px 10px;
+  cursor: pointer;
+}
+
+.main-box {
+  padding: 10px;
+}
+.main-box h2 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}

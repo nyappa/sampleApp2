@@ -1,0 +1,4 @@
+*.swp
+/*.lock
+/grunt/node_modules
+/vendor/bundle

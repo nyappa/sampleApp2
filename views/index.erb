@@ -1,0 +1,50 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <script src="/js/contents_all.js"></script>
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <title>EnglishStudy</title>
+</head>
+<body>
+  <div class="js-page-layout">
+    <span class="js-main"></span>
+  </div>
+</body>
+
+<script type="text/template" id="example-template">
+  <h1 class="icon-pen">EnglishStudy</h1>
+  <ul></ul>
+  <a href="#" class="js-add-text">Add</a>
+</script>
+
+<script type="text/template" id="text-add-template">
+<div>
+  <input type="text" name="title">
+  <textarea name="text"></textarea>
+  <input type="button" class="js-add-eng-text" value="Add your want to read text">
+</div>
+</script>
+
+<script type="text/template" id="text-detail-template">
+  <h1 class="icon-pen">
+     {{title}}
+     <a href="#">Return</a>
+  </h1>
+  <div class="main-box">
+    <a href="#" class="js-delete">Delete</a>
+    <span class="main-text">{{text}}</span>
+  </div>
+</script>
+
+<script type="text/template" id="app-template">
+  {{title}}
+</script>
+
+<script>
+  $(function(){
+    Apps.start();
+  });
+</script>
+
+</html>

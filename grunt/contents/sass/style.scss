@@ -19,9 +19,13 @@ h1 {
   font-weight: bold;
   border-bottom:solid 1px $gray;
   @include box-shadow($gray 0px 2px 2px);
+  position: fixed;
+  width: 100%;
+  top:0px;
 }
 
 ul {
+    margin-top:45px;
     li {
         border-bottom:solid 1px $gray;
         padding:20px 10px;
@@ -30,9 +34,28 @@ ul {
 }
 
 .main-box {
+    margin-top:60px;
     padding:10px;
     h2 {
         font-weight: bold;
         margin-bottom:10px;
+    }
+}
+
+.add {
+    display:inline-block;
+    background-color:$green;
+    @include border-radius(50%);
+    @include box-shadow($gray 2px 2px 5px);
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color:$white;
+    padding: 19px 16px 16px 20px;
+    text-decoration: none;
+    transition: all 0.20s ease 0s;
+    &:hover {
+        background-color:adjust-lightness($green, 10);
+
     }
 }

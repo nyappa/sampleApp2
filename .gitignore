@@ -2,3 +2,6 @@
 /*.lock
 /grunt/node_modules
 /vendor/bundle
+
+/grunt/.sass-cache
+/grunt/.sass-cache/*

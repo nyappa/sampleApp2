@@ -20,6 +20,12 @@ logger = Logger.new(STDOUT)
 class ReadEngTexts < ActiveRecord::Base
 end
 
+helpers do
+    #自前で書かないとpartial出来んらしい
+    def partial(template, options={})
+        erb "_#{template}".to_sym, options.merge(:layout => false)
+    end
+end
 
 # main codes
 get '/' do

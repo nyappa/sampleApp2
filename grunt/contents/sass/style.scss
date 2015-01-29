@@ -22,6 +22,27 @@ h1 {
   position: fixed;
   width: 100%;
   top:0px;
+  a {
+    color:$white;
+    text-decoration: none;
+  }
+}
+
+.menu {
+  transition: all 0.20s ease 0s;
+  background-color:$green;
+  color:$white;
+  float: right;
+  padding: 10px 15px;
+  font-weight: bold;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  font-size: 25px;
+  cursor: pointer;
+  &:hover {
+    color:adjust-lightness($white, -15);
+  }
 }
 
 ul {
@@ -58,3 +79,14 @@ ul {
         background-color:adjust-lightness($green, 10);
     }
 }
+
+.text-modal {
+    .modal-cancel {
+        float:right;
+        color:$green;
+        font-size: 30px;
+        text-decoration: none;
+    }
+}
+
+@import "modal";

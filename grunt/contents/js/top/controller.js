@@ -24,7 +24,7 @@ Apps.module('Controller', function (Controller, App, Backbone, Marionette, $, _)
       },
       detail : function(id) {
           var layout          = new Apps.Views.ModerationLayout,
-              textDetailModel = new Apps.Model.TextDetail;;
+              textDetailModel = new Apps.Model.TextDetail;
           textDetailModel.fetch({
               data     : { "id" : id },
               method   : "GET",
@@ -35,6 +35,7 @@ Apps.module('Controller', function (Controller, App, Backbone, Marionette, $, _)
                   }));
               },
               error    : function () {
+                  Apps.router.navigate("/", {trigger:true});
               }
           });
       }

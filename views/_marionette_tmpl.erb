@@ -1,0 +1,28 @@
+<script type="text/template" id="example-template">
+  <h1 class="icon-pen">SampleApps</h1>
+  <ul></ul>
+  <a href="#" class="js-add-text add icon-plus"></a>
+</script>
+
+<script type="text/template" id="text-add-template">
+<div>
+  <input type="text" name="title">
+  <textarea name="text"></textarea>
+  <input type="button" class="js-add-eng-text" value="Add your want to read text">
+</div>
+</script>
+
+<script type="text/template" id="text-detail-template">
+  <h1>
+     <a href="#" class="icon-undo">Go back to text List</a>
+  </h1>
+  <span class="menu icon-menu js-menu"></span>
+  <div class="main-box">
+    <h2>{{title}}</h2>
+    <span class="main-text">{{text}}</span>
+  </div>
+</script>
+
+<script type="text/template" id="app-template">
+  {{title}}
+</script>

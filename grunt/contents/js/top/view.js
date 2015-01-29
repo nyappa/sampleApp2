@@ -7,11 +7,36 @@ Apps.module('Views', function (Views, App, Backbone, Marionette, $) {
         }
     });
 
+    Views.OptionsModal = Marionette.ItemView.extend({
+        template   : "#text-options-template",
+        initialize : function () {},
+        events: {
+            "click .js-text-delete" : "deleteText"
+        },
+        deleteText : function () {
+            var that            = this,
+                textDetailModel = new Apps.Model.TextDetail;
+            textDetailModel.fetch({
+                data     : { "id" : this.model.get("id") },
+                method   : "DELETE",
+                dataType : "json",
+                success  : function () {
+                    that.trigger('modal:window:close');
+                    Apps.router.navigate("/", {trigger:true});
+                },
+                error    : function () {
+                }
+            });
+            return false;
+        }
+    });
+
     Views.TextDetailView = Marionette.ItemView.extend({
         template   : "#text-detail-template",
         initialize: function () {},
         events: {
-            "click .js-delete" : "deleteText"
+            "click .js-delete" : "deleteText",
+            "click .js-menu"   : "openOptions"
         },
         deleteText : function () {
             this.model.fetch({
@@ -25,6 +50,19 @@ Apps.module('Views', function (Views, App, Backbone, Marionette, $) {
                 }
             });
             return false;
+        },
+        openOptions : function () {
+            var modal = new Modal.Views.Main({ collection: new AppWidgets.Model.ModalCollection });
+            modal.set({
+                top         : "10px",
+                viewAddData : {
+                    "title" : this.model.get("title"),
+                    "id"    : this.model.get("id")
+                },
+                childView   : Apps.Views.OptionsModal,
+                width       : "90%"
+            });
+            Modal.modal.show(modal);
         }
     });
 

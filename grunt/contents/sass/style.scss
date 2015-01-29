@@ -12,6 +12,10 @@ html,body {
   line-height: 25px;
 }
 
+a {
+    text-decoration: none;
+}
+
 h1 {
   background-color:$green;
   padding:15px;
@@ -24,7 +28,6 @@ h1 {
   top:0px;
   a {
     color:$white;
-    text-decoration: none;
   }
 }
 
@@ -51,15 +54,23 @@ ul {
         border-bottom:solid 1px $gray;
         padding:20px 10px;
         cursor: pointer;
+        &:before {
+            color:$green;
+            font-size:20px;
+        }
     }
 }
 
 .main-box {
     margin-top:60px;
     padding:10px;
+    @include box-shadow($gray 2px 2px 5px);
     h2 {
         font-weight: bold;
         margin-bottom:10px;
+        &:before {
+            color:$green;
+        }
     }
 }
 
@@ -73,7 +84,6 @@ ul {
     right: 20px;
     color:$white;
     padding: 19px 16px 16px 20px;
-    text-decoration: none;
     transition: all 0.20s ease 0s;
     &:hover {
         background-color:adjust-lightness($green, 10);
@@ -85,7 +95,13 @@ ul {
         float:right;
         color:$green;
         font-size: 30px;
-        text-decoration: none;
+    }
+    .options-menu {
+        padding:20px;
+        a {
+            color:$green;
+            font-size:50px;
+        }
     }
 }
 

@@ -94,6 +94,7 @@ Apps.module('Views', function (Views, App, Backbone, Marionette, $) {
     Views.AppView = Marionette.ItemView.extend({
         tagName    : "li",
         template   : "#app-template",
+        className  : "icon-confused",
         initialize : function () {},
         events     : {
             "click": "openDetail"

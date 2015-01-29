@@ -74,6 +74,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   margin-right: 5px;
 }
 
+.icon-cog:before {
+  content: "\e68e";
+}
+
+.icon-confused:before {
+  content: "\e6eb";
+}
+
 .icon-cancel-circle:before {
   content: "\e6fa";
 }
@@ -171,6 +179,10 @@ html, body {
   line-height: 25px;
 }
 
+a {
+  text-decoration: none;
+}
+
 h1 {
   background-color: #afb42b;
   padding: 15px;
@@ -186,7 +198,6 @@ h1 {
 }
 h1 a {
   color: #f9fbe7;
-  text-decoration: none;
 }
 
 .menu {
@@ -214,14 +225,24 @@ ul li {
   padding: 20px 10px;
   cursor: pointer;
 }
+ul li:before {
+  color: #afb42b;
+  font-size: 20px;
+}
 
 .main-box {
   margin-top: 60px;
   padding: 10px;
+  -webkit-box-shadow: #9e9e9e 2px 2px 5px;
+  -moz-box-shadow: #9e9e9e 2px 2px 5px;
+  box-shadow: #9e9e9e 2px 2px 5px;
 }
 .main-box h2 {
   font-weight: bold;
   margin-bottom: 10px;
+}
+.main-box h2:before {
+  color: #afb42b;
 }
 
 .add {
@@ -240,7 +261,6 @@ ul li {
   right: 20px;
   color: #f9fbe7;
   padding: 19px 16px 16px 20px;
-  text-decoration: none;
   transition: all 0.20s ease 0s;
 }
 .add:hover {
@@ -251,7 +271,13 @@ ul li {
   float: right;
   color: #afb42b;
   font-size: 30px;
-  text-decoration: none;
+}
+.text-modal .options-menu {
+  padding: 20px;
+}
+.text-modal .options-menu a {
+  color: #afb42b;
+  font-size: 50px;
 }
 
 .ui-modals-common .ui-modals {

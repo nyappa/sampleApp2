@@ -4,8 +4,8 @@
 @import "compass/typography/links/link-colors";
 @import "compass/css3";
 @import "compass/css3/user-interface";
-@import "font_set";
 @import "color_set";
+@import "font_set";
 
 html,body {
   width:100%;
@@ -55,9 +55,35 @@ ul {
         padding:20px 10px;
         cursor: pointer;
         &:before {
-            color:$green;
             font-size:20px;
         }
+    }
+}
+
+input[type=text], textarea {
+    width:100%;
+    padding:10px;
+    border:solid 1px adjust-lightness($gray, 20);
+    @include border-radius(5px);
+    &.title {
+        margin-bottom:10px;
+    }
+    &.text-content {
+        height:200px;
+        margin-bottom:10px;
+    }
+}
+
+input[type=button] {
+    border:solid 1px adjust-lightness($green, -5);
+    background-color:$green;
+    padding:5px 80px;
+    cursor: pointer;
+    color:$white;
+    font-weight: bold;
+    @include border-radius(5px);
+    &:hover {
+        background-color:adjust-lightness($green, 10);
     }
 }
 
@@ -66,42 +92,16 @@ ul {
     padding:10px;
     @include box-shadow($gray 2px 2px 5px);
     font-size:16px;
+    &.detail {
+        padding-bottom:70px;
+    }
     h2 {
         font-weight: bold;
         margin-bottom:10px;
-        &:before {
-            color:$green;
-        }
         &.nico-status {
             &:before {
-                color:$green;
                 font-size: 30px;
             }
-        }
-    }
-    input[type=text], textarea {
-        width:100%;
-        padding:10px;
-        border:solid 1px adjust-lightness($gray, 20);
-        @include border-radius(5px);
-        &.title {
-            margin-bottom:10px;
-        }
-        &.text-content {
-            height:200px;
-            margin-bottom:10px;
-        }
-    }
-    input[type=button] {
-        border:solid 1px adjust-lightness($green, -5);
-        background-color:$green;
-        padding:5px 80px;
-        cursor: pointer;
-        color:$white;
-        font-weight: bold;
-        @include border-radius(5px);
-        &:hover {
-            background-color:adjust-lightness($green, 10);
         }
     }
 }
@@ -120,14 +120,34 @@ ul {
     &:hover {
         background-color:adjust-lightness($green, 10);
     }
+    &.word {
+        color:$green;
+        @include opacity(0.9);
+        background-color:$white;
+        border:solid 1px $green;
+        &:hover {
+            color:$white;
+            background-color:$green;
+            border:solid 1px $white;
+        }
+    }
 }
 
-.text-modal {
+.modal-body {
     .modal-cancel {
         float:right;
         color:$green;
         font-size: 30px;
     }
+}
+
+.word-modal {
+    .add-form {
+        padding:20px;
+    }
+}
+
+.text-modal {
     .options-menu {
         padding:20px;
         a {
@@ -141,7 +161,6 @@ ul {
             h4 {
                margin-bottom: 15px;
                [class^="icon-"] {
-                   color:$green;
                    font-size:20px;
                    vertical-align: middle;
                }

@@ -19,6 +19,8 @@ logger = Logger.new(STDOUT)
 #db override
 class ReadEngTexts < ActiveRecord::Base
 end
+class Word < ActiveRecord::Base
+end
 
 helpers do
     #自前で書かないとpartial出来んらしい
@@ -32,6 +34,24 @@ get '/' do
   erb :index
 end
 
+#word codes
+post'/word.json' do
+    content_type :json
+    word         = Word.new
+    word.word    = @params[:word]
+    word.meaning = @params[:meaning]
+    word.text_id = @params[:text_id]
+    word.save
+    { :status => "sucsess" }.to_json
+end
+
+get'/words.json' do
+    content_type :json
+    Word.where(["text_id = ?", @params[:id]]).to_json
+end
+
+
+# text codes
 post'/generate_data.json' do
     content_type :json
     eng        = ReadEngTexts.new

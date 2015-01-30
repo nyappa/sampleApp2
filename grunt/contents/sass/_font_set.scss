@@ -28,15 +28,19 @@
 //use status
 .icon-neutral:before {
   content: "\e6ed";
+  color:$green;
 }
 .icon-confused:before {
   content: "\e6eb";
+  color:$gray;
 }
 .icon-smiley:before {
   content: "\e6d9";
+  color:$orange;
 }
 .icon-grin:before {
   content: "\e6e1";
+  color:$yellow;
 }
 //use status -- end
 

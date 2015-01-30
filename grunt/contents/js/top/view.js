@@ -51,12 +51,55 @@ Apps.module('Views', function (Views, App, Backbone, Marionette, $) {
         }
     });
 
+    Views.WordAddModal = Marionette.ItemView.extend({
+        template   : "#word-add-template",
+        initialize : function () {},
+        events: {
+            "click .js-add-word" : "addWord"
+        },
+        addWord : function (e) {
+            var that            = this,
+                word = new Apps.Model.Word;
+            word.fetch({
+                data : {
+                    "word"    : that.$el.find("input[name=word]").val(),
+                    "meaning" : that.$el.find("textarea[name=meaning]").val(),
+                    "text_id" : that.model.get("id"),
+                    "status"  : "confused"
+                },
+                method   : "POST",
+                dataType : "json",
+                success  : function () {
+                    that.trigger('modal:window:close');
+                    Apps.router.navigate("detail/" + that.model.get("id") + "&" + new Date().getTime(), {trigger:true});
+                },
+                error    : function () {
+                }
+            });
+            return false;
+        }
+    });
+
     Views.TextDetailView = Marionette.ItemView.extend({
         template   : "#text-detail-template",
         initialize: function () {},
         events: {
-            "click .js-delete" : "deleteText",
-            "click .js-menu"   : "openOptions"
+            "click .js-delete"   : "deleteText",
+            "click .js-menu"     : "openOptions",
+            "click .js-add-word" : "openWordAdds"
+        },
+        onShow : function () {
+            var Words = new Apps.Model.Words;
+            Words.fetch({
+                data     : { id: this.model.get("id") },
+                method   : "GET",
+                dataType : "json",
+                success  : function () {
+                    console.log(Words);
+                },
+                error    : function () {
+                }
+            });
         },
         deleteText : function () {
             this.model.fetch({
@@ -84,6 +127,19 @@ Apps.module('Views', function (Views, App, Backbone, Marionette, $) {
                 width       : "90%"
             });
             Modal.modal.show(modal);
+        },
+        openWordAdds : function () {
+            var modal = new Modal.Views.Main({ collection: new AppWidgets.Model.ModalCollection });
+            modal.set({
+                top         : "10px",
+                viewAddData : {
+                    "id" : this.model.get("id"),
+                },
+                childView   : Apps.Views.WordAddModal,
+                width       : "90%"
+            });
+            Modal.modal.show(modal);
+            return false;
         }
     });
 

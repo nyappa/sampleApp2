@@ -80,18 +80,22 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 .icon-neutral:before {
   content: "\e6ed";
+  color: #afb42b;
 }
 
 .icon-confused:before {
   content: "\e6eb";
+  color: #9e9e9e;
 }
 
 .icon-smiley:before {
   content: "\e6d9";
+  color: #ff9800;
 }
 
 .icon-grin:before {
   content: "\e6e1";
+  color: #e65100;
 }
 
 .icon-cancel-circle:before {
@@ -238,30 +242,10 @@ ul li {
   cursor: pointer;
 }
 ul li:before {
-  color: #afb42b;
   font-size: 20px;
 }
 
-.main-box {
-  margin-top: 60px;
-  padding: 10px;
-  -webkit-box-shadow: #9e9e9e 2px 2px 5px;
-  -moz-box-shadow: #9e9e9e 2px 2px 5px;
-  box-shadow: #9e9e9e 2px 2px 5px;
-  font-size: 16px;
-}
-.main-box h2 {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-.main-box h2:before {
-  color: #afb42b;
-}
-.main-box h2.nico-status:before {
-  color: #afb42b;
-  font-size: 30px;
-}
-.main-box input[type=text], .main-box textarea {
+input[type=text], textarea {
   width: 100%;
   padding: 10px;
   border: solid 1px #d1d1d1;
@@ -271,14 +255,15 @@ ul li:before {
   -o-border-radius: 5px;
   border-radius: 5px;
 }
-.main-box input[type=text].title, .main-box textarea.title {
+input[type=text].title, textarea.title {
   margin-bottom: 10px;
 }
-.main-box input[type=text].text-content, .main-box textarea.text-content {
+input[type=text].text-content, textarea.text-content {
   height: 200px;
   margin-bottom: 10px;
 }
-.main-box input[type=button] {
+
+input[type=button] {
   border: solid 1px #9b9f26;
   background-color: #afb42b;
   padding: 5px 80px;
@@ -291,8 +276,27 @@ ul li:before {
   -o-border-radius: 5px;
   border-radius: 5px;
 }
-.main-box input[type=button]:hover {
+input[type=button]:hover {
   background-color: #ccd141;
+}
+
+.main-box {
+  margin-top: 60px;
+  padding: 10px;
+  -webkit-box-shadow: #9e9e9e 2px 2px 5px;
+  -moz-box-shadow: #9e9e9e 2px 2px 5px;
+  box-shadow: #9e9e9e 2px 2px 5px;
+  font-size: 16px;
+}
+.main-box.detail {
+  padding-bottom: 70px;
+}
+.main-box h2 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.main-box h2.nico-status:before {
+  font-size: 30px;
 }
 
 .add {
@@ -316,12 +320,29 @@ ul li:before {
 .add:hover {
   background-color: #ccd141;
 }
+.add.word {
+  color: #afb42b;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+  opacity: 0.9;
+  background-color: #f9fbe7;
+  border: solid 1px #afb42b;
+}
+.add.word:hover {
+  color: #f9fbe7;
+  background-color: #afb42b;
+  border: solid 1px #f9fbe7;
+}
 
-.text-modal .modal-cancel {
+.modal-body .modal-cancel {
   float: right;
   color: #afb42b;
   font-size: 30px;
 }
+
+.word-modal .add-form {
+  padding: 20px;
+}
+
 .text-modal .options-menu {
   padding: 20px;
 }
@@ -338,7 +359,6 @@ ul li:before {
   margin-bottom: 15px;
 }
 .text-modal .options-menu .status-menu h4 [class^="icon-"] {
-  color: #afb42b;
   font-size: 20px;
   vertical-align: middle;
 }

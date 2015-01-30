@@ -101,8 +101,13 @@ input[type=button] {
         &.nico-status {
             &:before {
                 font-size: 30px;
+                vertical-align: middle;
             }
         }
+    }
+    a {
+        font-weight: bold;
+        color:$orange;
     }
 }
 

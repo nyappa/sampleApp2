@@ -297,6 +297,11 @@ input[type=button]:hover {
 }
 .main-box h2.nico-status:before {
   font-size: 30px;
+  vertical-align: middle;
+}
+.main-box a {
+  font-weight: bold;
+  color: #ff9800;
 }
 
 .add {

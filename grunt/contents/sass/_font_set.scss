@@ -25,9 +25,20 @@
   content: "\e68e";
 }
 
+//use status
+.icon-neutral:before {
+  content: "\e6ed";
+}
 .icon-confused:before {
   content: "\e6eb";
 }
+.icon-smiley:before {
+  content: "\e6d9";
+}
+.icon-grin:before {
+  content: "\e6e1";
+}
+//use status -- end
 
 .icon-cancel-circle:before {
   content: "\e6fa";

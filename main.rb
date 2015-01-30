@@ -34,11 +34,20 @@ end
 
 post'/generate_data.json' do
     content_type :json
-    eng       = ReadEngTexts.new
-    eng.title = @params[:title]
-    eng.text  = @params[:text]
+    eng        = ReadEngTexts.new
+    eng.title  = @params[:title]
+    eng.text   = @params[:text]
+    eng.status = @params[:status]
     eng.save
     ReadEngTexts.all.to_json
+end
+
+patch'/text_detail.json' do
+    content_type :json
+    eng = ReadEngTexts.find(@params[:id])
+    eng.status = @params[:status]
+    eng.save
+    { :status => "sucsess" }.to_json
 end
 
 get'/generate_data.json' do

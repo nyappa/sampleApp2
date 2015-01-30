@@ -11,7 +11,27 @@ Apps.module('Views', function (Views, App, Backbone, Marionette, $) {
         template   : "#text-options-template",
         initialize : function () {},
         events: {
-            "click .js-text-delete" : "deleteText"
+            "click .js-text-delete"   : "deleteText",
+            "click .js-change-status" : "changeStatus"
+        },
+        changeStatus : function (e) {
+            var that            = this,
+                textDetailModel = new Apps.Model.TextDetail;
+            textDetailModel.fetch({
+                data : {
+                    "id"     : this.model.get("id"),
+                    "status" : e.target.dataset.status
+                },
+                method   : "PATCH",
+                dataType : "json",
+                success  : function () {
+                    that.trigger('modal:window:close');
+                    Apps.router.navigate("detail/" + that.model.get("id") + "&" + new Date().getTime(), {trigger:true});
+                },
+                error    : function () {
+                }
+            });
+            return false;
         },
         deleteText : function () {
             var that            = this,
@@ -56,8 +76,9 @@ Apps.module('Views', function (Views, App, Backbone, Marionette, $) {
             modal.set({
                 top         : "10px",
                 viewAddData : {
-                    "title" : this.model.get("title"),
-                    "id"    : this.model.get("id")
+                    "title"  : this.model.get("title"),
+                    "id"     : this.model.get("id"),
+                    "status" : this.model.get("status")
                 },
                 childView   : Apps.Views.OptionsModal,
                 width       : "90%"
@@ -77,13 +98,14 @@ Apps.module('Views', function (Views, App, Backbone, Marionette, $) {
             var that = this;
             this.collection.fetch({
                 data     : {
-                    "title" : that.$el.find("input[name=title]").val(),
-                    "text"  : that.$el.find("textarea[name=text]").val()
+                    "title"  : that.$el.find("input[name=title]").val(),
+                    "text"   : that.$el.find("textarea[name=text]").val(),
+                    "status" : "confused"
                 },
                 method   : "POST",
                 dataType : "json",
                 success  : function () {
-                    that.render();
+                    Apps.router.navigate("/", {trigger:true});
                 },
                 error    : function () {
                 }
@@ -94,7 +116,7 @@ Apps.module('Views', function (Views, App, Backbone, Marionette, $) {
     Views.AppView = Marionette.ItemView.extend({
         tagName    : "li",
         template   : "#app-template",
-        className  : "icon-confused",
+        className  : function(){ return "icon-"+this.model.get("status") },
         initialize : function () {},
         events     : {
             "click": "openDetail"

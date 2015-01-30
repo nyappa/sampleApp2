@@ -8,10 +8,11 @@
 <h1>
   <a href="#" class="icon-undo">Go back to text List</a>
 </h1>
-<div class="main-box">
-  <input type="text" name="title">
-  <textarea name="text"></textarea>
-  <input type="button" class="js-add-eng-text" value="Add your want to read text">
+<div class="main-box add-form">
+  <h2 class="icon-plus">Data Adds</h2>
+  <input type="text" name="title" class="title" placeholder="Title">
+  <textarea name="text" class="text-content" placeholder="Please add the text you want to read"></textarea>
+  <input type="button" class="js-add-eng-text" value="Add">
 </div>
 </script>
 
@@ -21,7 +22,7 @@
   </h1>
   <span class="menu icon-menu js-menu"></span>
   <div class="main-box">
-    <h2 class="icon-confused">{{title}}</h2>
+    <h2 class="icon-{{status}} nico-status">{{title}}</h2>
     <span class="main-text">{{text}}</span>
   </div>
 </script>

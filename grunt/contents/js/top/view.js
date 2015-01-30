@@ -83,23 +83,38 @@ Apps.module('Views', function (Views, App, Backbone, Marionette, $) {
     Views.TextDetailView = Marionette.ItemView.extend({
         template   : "#text-detail-template",
         initialize: function () {},
+        modelEvents: {
+            change: 'render'
+        },
         events: {
             "click .js-delete"   : "deleteText",
             "click .js-menu"     : "openOptions",
             "click .js-add-word" : "openWordAdds"
         },
         onShow : function () {
-            var Words = new Apps.Model.Words;
+            var Words = new Apps.Model.Words,
+                that  = this;
             Words.fetch({
                 data     : { id: this.model.get("id") },
                 method   : "GET",
                 dataType : "json",
                 success  : function () {
-                    console.log(Words);
+                    that._replaceText(Words.models);
                 },
                 error    : function () {
                 }
             });
+        },
+        _replaceText : function (models) {
+            var s    = 0,
+                text = $("<div/>").text(this.model.get("text")).html();
+            for (s;  models.length > s; s++){
+                text = text.replace(
+                    models[s].get("word"),
+                    "<a href='#' class='js-word-detail'>"+models[s].get("word")+"</a>"
+                );
+            }
+            this.model.set({"text": text});
         },
         deleteText : function () {
             this.model.fetch({

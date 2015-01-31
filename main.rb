@@ -41,7 +41,27 @@ post'/word.json' do
     word.word    = @params[:word]
     word.meaning = @params[:meaning]
     word.text_id = @params[:text_id]
+    word.status  = @params[:status]
     word.save
+    { :status => "sucsess" }.to_json
+end
+
+patch'/word.json' do
+    content_type :json
+    word = Word.find(@params[:id])
+    word.status = @params[:status]
+    word.save
+    word.to_json
+end
+
+get'/word.json' do
+    content_type :json
+    Word.find(@params[:id]).to_json
+end
+
+delete '/word.json' do
+    content_type :json
+    Word.find(@params[:id]).delete
     { :status => "sucsess" }.to_json
 end
 
@@ -49,7 +69,6 @@ get'/words.json' do
     content_type :json
     Word.where(["text_id = ?", @params[:id]]).to_json
 end
-
 
 # text codes
 post'/generate_data.json' do

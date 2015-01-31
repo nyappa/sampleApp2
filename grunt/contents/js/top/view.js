@@ -80,6 +80,66 @@ Apps.module('Views', function (Views, App, Backbone, Marionette, $) {
         }
     });
 
+    Views.WordDetailModal = Marionette.ItemView.extend({
+        template   : "#word-detail-template",
+        initialize : function () {},
+        modelEvents: {
+            change: 'render'
+        },
+        events: {
+            "click .js-change-status" : "changeStatus",
+            "click .js-delete"        : "deleteDetail"
+        },
+        onShow : function () {
+           var wordModel = new Apps.Model.Word,
+               that      = this;
+           wordModel.fetch({
+               data     : { id: this.model.get("id") },
+               method   : "GET",
+               dataType : "json",
+               success  : function (e) {
+                   that.model.set(wordModel.attributes); 
+               },
+               error    : function () {
+               }
+           });
+        },
+        changeStatus : function (e) {
+            var that      = this,
+                wordModel = new Apps.Model.Word;
+            wordModel.fetch({
+                data : {
+                    "id"     : this.model.get("id"),
+                    "status" : e.target.dataset.status
+                },
+                method   : "PATCH",
+                dataType : "json",
+                success  : function () {
+                    that.model.set(wordModel.attributes); 
+                },
+                error    : function () {
+                }
+            });
+            return false;
+        },
+        deleteDetail : function () {
+            var that      = this,
+                wordModel = new Apps.Model.Word;
+            wordModel.fetch({
+                data     : { "id" : this.model.get("id") },
+                method   : "DELETE",
+                dataType : "json",
+                success  : function () {
+                    that.trigger('modal:window:close');
+                    Apps.router.navigate("detail/"+ that.model.get("text_id") + "&" + new Date().getTime(), {trigger:true});
+                },
+                error    : function () {
+                }
+            });
+            return false;
+        }
+    });
+
     Views.TextDetailView = Marionette.ItemView.extend({
         template   : "#text-detail-template",
         initialize: function () {},
@@ -87,9 +147,10 @@ Apps.module('Views', function (Views, App, Backbone, Marionette, $) {
             change: 'render'
         },
         events: {
-            "click .js-delete"   : "deleteText",
-            "click .js-menu"     : "openOptions",
-            "click .js-add-word" : "openWordAdds"
+            "click .js-delete"      : "deleteText",
+            "click .js-menu"        : "openOptions",
+            "click .js-add-word"    : "openWordAdds",
+            "click .js-word-detail" : "openWordDetail"
         },
         onShow : function () {
             var Words = new Apps.Model.Words,
@@ -111,10 +172,25 @@ Apps.module('Views', function (Views, App, Backbone, Marionette, $) {
             for (s;  models.length > s; s++){
                 text = text.replace(
                     models[s].get("word"),
-                    "<a href='#' class='js-word-detail'>"+models[s].get("word")+"</a>"
+                    "<a href='#' class='js-word-detail' data-id='"+ models[s].get("id") +"'>"+models[s].get("word")+"</a>"
                 );
             }
             this.model.set({"text": text});
+        },
+        openWordDetail : function (e) {
+            var modal = new Modal.Views.Main({ collection: new AppWidgets.Model.ModalCollection });
+            modal.set({
+                top         : "10px",
+                viewAddData : {
+                    "id"      : e.target.dataset.id,
+                    "word"    : "",
+                    "meaning" : ""
+                },
+                childView   : Apps.Views.WordDetailModal,
+                width       : "90%"
+            });
+            Modal.modal.show(modal);
+            return false;
         },
         deleteText : function () {
             this.model.fetch({

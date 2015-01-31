@@ -144,15 +144,6 @@ input[type=button] {
         color:$green;
         font-size: 30px;
     }
-}
-
-.word-modal {
-    .add-form {
-        padding:20px;
-    }
-}
-
-.text-modal {
     .options-menu {
         padding:20px;
         a {
@@ -171,6 +162,22 @@ input[type=button] {
                }
             }
         }
+    }
+}
+
+.word-detail-modal {
+    h3 {
+        font-size:30px;
+    }
+    .meaning {
+        padding:10px;
+        display: block;
+    }
+}
+
+.word-modal {
+    .add-form {
+        padding:20px;
     }
 }
 

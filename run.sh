@@ -1,2 +1,2 @@
 #!/bin/sh
-rerun --dir ./ "rackup -p 4567"
+rerun --dir ./ "rackup -p 3000"

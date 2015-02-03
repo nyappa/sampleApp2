@@ -348,7 +348,12 @@ input[type=button]:hover {
 }
 .modal-body .options-menu a {
   color: #afb42b;
-  font-size: 50px;
+  font-size: 40px;
+}
+.modal-body .options-menu a.icon-remove {
+  float: right;
+  font-size: 30px;
+  margin-bottom: 20px;
 }
 .modal-body .options-menu .status-menu {
   padding-bottom: 20px;

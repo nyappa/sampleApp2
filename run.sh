@@ -1,2 +1,2 @@
 #!/bin/sh
-bundle exec rerun --dir ./ "rackup -p 3000"
+bundle exec rerun --dir ./ "rackup -p 3002"
